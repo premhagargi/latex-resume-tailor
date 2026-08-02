@@ -6,9 +6,10 @@
 
 @layer base {
   body {
-    background-color: #080b11;
-    color: #f8fafc;
-    min-height: 100vh;
+    background-color: #fafafa;
+    color: #111111;
+    height: 100vh;
+    overflow: hidden;
     @apply bg-background text-foreground;
   }
   * {
@@ -26,16 +27,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {

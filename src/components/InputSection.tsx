@@ -40,26 +40,21 @@ export const InputSection: React.FC<InputSectionProps> = ({
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-      {/* Panel 1: Original LaTeX Resume Code */}
-      <Card className="flex flex-col h-[650px] bg-[#0c101a] border-slate-800/80 overflow-hidden shadow-2xl transition-all hover:border-slate-700/80 p-0 rounded-2xl">
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-900/60 border-b border-slate-800/80">
+    <>
+      <Card className="flex flex-col h-full bg-white border-slate-200 shadow-sm overflow-hidden p-0 rounded-xl">
+        <div className="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400">
-              <FileCode className="w-4 h-4" />
-            </div>
+            <FileCode className="w-4 h-4 text-slate-500" />
             <div>
-              <h2 className="text-xs font-bold text-slate-200 uppercase tracking-wider">LaTeX Resume Source</h2>
-              <span className="text-[10px] text-slate-400">{latexCode.length} characters</span>
+              <h2 className="text-xs font-semibold text-slate-700">LaTeX Source</h2>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <Button
               variant="outline"
               size="sm"
               onClick={handleLoadSample}
-              className="h-7 text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors border-indigo-500/20"
-              title="Load Tier-1 Engineer Resume Sample"
+              className="h-6 text-[10px] text-slate-600 px-2"
             >
               <Sparkles className="w-3 h-3 mr-1" /> Sample
             </Button>
@@ -67,81 +62,64 @@ export const InputSection: React.FC<InputSectionProps> = ({
               variant="ghost"
               size="sm"
               onClick={handleClear}
-              className="h-7 w-7 p-0 text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors text-[11px]"
-              title="Clear text"
+              className="h-6 w-6 p-0 text-slate-400 hover:text-slate-600"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="w-3 h-3" />
             </Button>
           </div>
         </div>
-
-        <div className="flex-1 relative p-0 bg-[#080b11]">
+        <div className="flex-1 p-0 relative">
           <Textarea
             value={latexCode}
             onChange={(e) => onChangeLatex(e.target.value)}
-            placeholder="Paste your original LaTeX resume code here (\documentclass{article}...)"
-            className="w-full h-full border-0 bg-transparent text-slate-200 font-mono text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 focus-visible:ring-offset-0 p-3"
+            placeholder="Paste your original LaTeX resume code here..."
+            className="w-full h-full absolute inset-0 border-0 bg-transparent text-slate-800 font-mono text-[11px] leading-relaxed rounded-none resize-none focus-visible:ring-0 p-3"
             spellCheck={false}
           />
         </div>
       </Card>
 
-      {/* Panel 2: Target Job Description & Parameters */}
-      <Card className="flex flex-col h-[650px] bg-[#0c101a] border-slate-800/80 overflow-hidden shadow-2xl transition-all hover:border-slate-700/80 p-0 rounded-2xl">
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-900/60 border-b border-slate-800/80">
+      <Card className="flex flex-col h-full bg-white border-slate-200 shadow-sm overflow-hidden p-0 rounded-xl">
+        <div className="flex items-center justify-between px-3 py-2 bg-slate-50 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
-              <FileText className="w-4 h-4" />
-            </div>
-            <div>
-              <h2 className="text-xs font-bold text-slate-200 uppercase tracking-wider">Target Job Description</h2>
-              <span className="text-[10px] text-slate-400">Extracts keywords & requirements</span>
-            </div>
+            <FileText className="w-4 h-4 text-slate-500" />
+            <h2 className="text-xs font-semibold text-slate-700">Job Description</h2>
           </div>
-
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 bg-slate-950 border border-slate-800 px-2 py-1 rounded-lg text-xs">
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 px-2 py-0.5 rounded text-xs">
               <Building2 className="w-3 h-3 text-slate-400" />
               <Input
                 type="text"
                 value={companyTarget}
                 onChange={(e) => onChangeCompany(e.target.value)}
                 placeholder="Target Co (e.g. Stripe)"
-                className="h-5 p-0 bg-transparent border-0 text-slate-200 text-[11px] outline-none w-28 placeholder:text-slate-600 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="h-5 p-0 bg-transparent border-0 text-slate-700 text-[10px] outline-none w-24 focus-visible:ring-0"
               />
             </div>
           </div>
         </div>
-
-        <div className="flex-1 relative p-0 bg-[#080b11]">
+        <div className="flex-1 p-0 relative">
           <Textarea
             value={jobDescription}
             onChange={(e) => onChangeJD(e.target.value)}
-            placeholder="Paste the target Job Description (Responsibilities, Tech Stack, Requirements, Key Metrics)..."
-            className="w-full h-full border-0 bg-transparent text-slate-200 font-sans text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 focus-visible:ring-offset-0 p-3"
+            placeholder="Paste the target Job Description..."
+            className="w-full h-full absolute inset-0 border-0 bg-transparent text-slate-800 text-[11px] leading-relaxed rounded-none resize-none focus-visible:ring-0 p-3"
           />
         </div>
-
-        <div className="p-3 bg-slate-900/60 border-t border-slate-800/80 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-1 text-[11px] text-slate-400">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Preserves LaTeX syntax, injects XYZ metrics & JD keywords.</span>
-          </div>
-
+        <div className="p-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+          <span className="text-[10px] text-slate-500 flex items-center gap-1">
+            <SlidersHorizontal className="w-3 h-3" /> Ready for optimization
+          </span>
           <Button
             onClick={onOptimize}
             disabled={isProcessing || !latexCode.trim() || !jobDescription.trim()}
-            className={`flex items-center gap-2 px-5 h-9 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl ${
-              isProcessing || !latexCode.trim() || !jobDescription.trim()
-                ? 'bg-slate-800 text-slate-500 border border-slate-700 cursor-not-allowed'
-                : 'bg-gradient-to-r from-indigo-500 via-purple-600 to-emerald-500 hover:opacity-95 text-white shadow-indigo-500/20'
-            }`}
+            className="h-7 text-[10px] font-semibold px-4 rounded-md bg-slate-900 hover:bg-slate-800 text-white"
           >
-            <Sparkles className={`w-3.5 h-3.5 ${isProcessing ? 'animate-spin' : ''}`} />
-            <span>{isProcessing ? 'Optimizing Resume...' : 'Tailor Resume Now'}</span>
+            <Sparkles className={`w-3 h-3 mr-1.5 ${isProcessing ? 'animate-spin' : ''}`} />
+            {isProcessing ? 'Processing...' : 'Tailor Resume'}
           </Button>
         </div>
       </Card>
-    </div>
+    </>
   );
 };
