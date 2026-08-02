@@ -97,7 +97,7 @@ export function App() {
       <Dialog open={!!result} onOpenChange={(open) => { if (!open) setResult(null); }}>
         <DialogContent 
           showCloseButton={false} 
-          className="w-full max-w-none md:w-[96vw] h-[100vh] md:h-[96vh] p-0 overflow-hidden flex flex-col bg-slate-50 border-none shadow-2xl md:rounded-[24px]"
+          className="!w-[98vw] !max-w-[1400px] h-[100vh] md:h-[96vh] p-0 overflow-hidden flex flex-col bg-white border border-slate-200/60 shadow-[0_32px_96px_rgba(0,0,0,0.15)] md:rounded-[2rem]"
         >
           <DialogTitle className="hidden">Optimization Result</DialogTitle>
           <DialogDescription className="hidden">Your tailored resume output</DialogDescription>
