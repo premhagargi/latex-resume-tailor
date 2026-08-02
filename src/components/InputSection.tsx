@@ -93,7 +93,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
               <FileCode className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-800 tracking-tight">LaTeX Source</h2>
+              <h2 className="text-sm font-semibold text-slate-800 tracking-tight">Paste Your LaTeX Resume</h2>
             </div>
           </div>
           <div className="flex items-center gap-1.5">
