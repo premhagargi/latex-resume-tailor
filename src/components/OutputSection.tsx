@@ -116,8 +116,8 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result }) => {
       <div className="flex-1 relative p-0 bg-white">
         {/* Tab 1: Full LaTeX Code Editor/Viewer */}
         {activeTab === 'latex' && (
-          <div className="absolute inset-0 overflow-auto p-3 font-mono text-[10px] text-slate-800 leading-relaxed bg-slate-50/50">
-            <pre className="whitespace-pre-wrap">
+          <div className="absolute inset-0 overflow-auto p-5 font-mono text-xs text-slate-800 leading-relaxed bg-slate-50/50">
+            <pre className="whitespace-pre-wrap selection:bg-blue-100 selection:text-blue-900">
               {result.tailoredLatex}
             </pre>
           </div>
@@ -125,29 +125,29 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result }) => {
 
         {/* Tab 2: Keyword Alignment & Coverage */}
         {activeTab === 'keywords' && (
-          <div className="absolute inset-0 overflow-auto space-y-4 p-4 bg-white">
-            <div className="space-y-2">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3 h-3 text-green-600" />
-                <h4 className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">Matched Keywords ({result.matchedKeywords.length})</h4>
+          <div className="absolute inset-0 overflow-auto space-y-6 p-6 bg-white">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">Matched Keywords ({result.matchedKeywords.length})</h4>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {result.matchedKeywords.map((kw, i) => (
-                  <span key={i} className="px-2 py-0.5 rounded bg-green-50 border border-green-200 text-green-700 font-medium text-[10px]">
+                  <span key={i} className="px-3 py-1 rounded-md bg-green-50 border border-green-200 text-green-700 font-medium text-xs shadow-sm">
                     {kw}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center gap-1.5">
-                <PlusCircle className="w-3 h-3 text-blue-600" />
-                <h4 className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">Injected Terms ({result.missingKeywordsAdded.length})</h4>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <PlusCircle className="w-4 h-4 text-blue-600" />
+                <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">Injected Terms ({result.missingKeywordsAdded.length})</h4>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {result.missingKeywordsAdded.map((kw, i) => (
-                  <span key={i} className="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-medium text-[10px]">
+                  <span key={i} className="px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-blue-700 font-medium text-xs shadow-sm">
                     + {kw}
                   </span>
                 ))}
@@ -158,26 +158,26 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result }) => {
 
         {/* Tab 3: Bullet Optimization Audit Trail */}
         {activeTab === 'audit' && (
-          <div className="absolute inset-0 overflow-auto space-y-3 p-3 bg-slate-50/50">
+          <div className="absolute inset-0 overflow-auto space-y-4 p-6 bg-slate-50/50">
             {result.keyChanges.map((change, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-lg p-3 space-y-2 shadow-sm">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
-                  <span className="text-[10px] font-bold text-slate-700 uppercase">{change.section}</span>
+              <div key={idx} className="bg-white border border-slate-200 rounded-xl p-4 space-y-3 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">{change.section}</span>
                 </div>
 
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 text-xs">
-                  <div className="space-y-1 p-2 rounded bg-red-50/50 border border-red-100">
-                    <span className="text-[9px] font-bold text-red-600 uppercase">Before</span>
-                    <p className="text-slate-600 font-mono text-[10px] leading-relaxed">{change.originalBullet}</p>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 text-xs">
+                  <div className="space-y-2 p-3 rounded-lg bg-red-50/50 border border-red-100">
+                    <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider">Before</span>
+                    <p className="text-slate-600 font-mono text-xs leading-relaxed">{change.originalBullet}</p>
                   </div>
 
-                  <div className="space-y-1 p-2 rounded bg-green-50/50 border border-green-100">
-                    <span className="text-[9px] font-bold text-green-600 uppercase">Optimized</span>
-                    <p className="text-slate-800 font-mono text-[10px] leading-relaxed">{change.optimizedBullet}</p>
+                  <div className="space-y-2 p-3 rounded-lg bg-green-50/50 border border-green-100">
+                    <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider">Optimized</span>
+                    <p className="text-slate-800 font-mono text-xs leading-relaxed">{change.optimizedBullet}</p>
                   </div>
                 </div>
 
-                <div className="text-[10px] text-slate-500 bg-slate-50 p-2 rounded border border-slate-100">
+                <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded-lg border border-slate-100 mt-2">
                   <span className="font-semibold text-slate-700">Rationale: </span>
                   {change.reason}
                 </div>
