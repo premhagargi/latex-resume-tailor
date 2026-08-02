@@ -1,6 +1,7 @@
 import React from 'react';
 import type { AISettings, AIProvider, CerebrasModel, GeminiModel, OptimizationLevel } from '../types';
-import { ShieldCheck, Cpu, Zap } from 'lucide-react';
+import { ShieldCheck, Settings2 } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 interface HeaderProps {
   settings: AISettings;
@@ -32,52 +33,60 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="flex items-center gap-2.5">
-        <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-1 text-xs hover:border-slate-300 transition-colors">
-          <Cpu className="w-3.5 h-3.5 text-slate-400 ml-1.5" />
-          <select
-            value={settings.provider}
-            onChange={(e) => onUpdateSettings({ provider: e.target.value as AIProvider })}
-            className="bg-transparent text-slate-700 font-medium outline-none py-1 pr-2 cursor-pointer text-xs"
-          >
-            <option value="cerebras">Cerebras AI (Superfast)</option>
-            <option value="gemini">Google Gemini</option>
-          </select>
+        <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
+          {settings.provider === 'cerebras' ? (
+            <img src="https://cerebras.ai/wp-content/uploads/2024/05/cropped-favicon-32x32.png" alt="Cerebras" className="w-4 h-4 ml-2.5 rounded-sm" />
+          ) : (
+            <img src="https://www.gstatic.com/lamda/images/favicon_v1_150160cddff7f294ce30.svg" alt="Google" className="w-4 h-4 ml-2.5" />
+          )}
+          <Select value={settings.provider} onValueChange={(val) => onUpdateSettings({ provider: val as AIProvider })}>
+            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[140px]">
+              <SelectValue placeholder="Provider" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="cerebras">Cerebras AI</SelectItem>
+              <SelectItem value="gemini">Google Gemini</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-1 text-xs hover:border-slate-300 transition-colors">
-          <Zap className="w-3.5 h-3.5 text-slate-400 ml-1.5" />
+        <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
+          <Settings2 className="w-3.5 h-3.5 text-slate-400 ml-2.5" />
           {settings.provider === 'cerebras' ? (
-            <select
-              value={settings.cerebrasModel}
-              onChange={(e) => onUpdateSettings({ cerebrasModel: e.target.value as CerebrasModel })}
-              className="bg-transparent text-slate-700 font-medium outline-none py-1 pr-2 cursor-pointer text-xs"
-            >
-              <option value="gpt-oss-120b">gpt-oss-120b (Recommended)</option>
-              <option value="gemma-4-31b">gemma-4-31b</option>
-              <option value="zai-glm-4.7">zai-glm-4.7</option>
-            </select>
+            <Select value={settings.cerebrasModel} onValueChange={(val) => onUpdateSettings({ cerebrasModel: val as CerebrasModel })}>
+              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[140px]">
+                <SelectValue placeholder="Model" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gpt-oss-120b">gpt-oss-120b</SelectItem>
+                <SelectItem value="gemma-4-31b">gemma-4-31b</SelectItem>
+                <SelectItem value="zai-glm-4.7">zai-glm-4.7</SelectItem>
+              </SelectContent>
+            </Select>
           ) : (
-            <select
-              value={settings.geminiModel}
-              onChange={(e) => onUpdateSettings({ geminiModel: e.target.value as GeminiModel })}
-              className="bg-transparent text-slate-700 font-medium outline-none py-1 pr-2 cursor-pointer text-xs"
-            >
-              <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
-              <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite</option>
-            </select>
+            <Select value={settings.geminiModel} onValueChange={(val) => onUpdateSettings({ geminiModel: val as GeminiModel })}>
+              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[150px]">
+                <SelectValue placeholder="Model" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gemini-2.5-flash">Gemini 2.5 Flash</SelectItem>
+                <SelectItem value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite</SelectItem>
+              </SelectContent>
+            </Select>
           )}
         </div>
 
-        <div className="hidden lg:flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-1 text-xs hover:border-slate-300 transition-colors">
-          <select
-            value={optimizationLevel}
-            onChange={(e) => onUpdateOptimizationLevel(e.target.value as OptimizationLevel)}
-            className="bg-transparent text-slate-700 font-medium outline-none py-1 px-2 cursor-pointer text-xs"
-          >
-            <option value="Aggressive ATS Match (95%+ Target)">Aggressive ATS</option>
-            <option value="Balanced Technical Depth">Balanced Technical Depth</option>
-            <option value="Executive Impact & Metrics Focus">Executive & Metrics</option>
-          </select>
+        <div className="hidden lg:flex items-center bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
+          <Select value={optimizationLevel} onValueChange={(val) => onUpdateOptimizationLevel(val as OptimizationLevel)}>
+            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[190px]">
+              <SelectValue placeholder="Optimization" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Aggressive ATS Match (95%+ Target)">Aggressive ATS</SelectItem>
+              <SelectItem value="Balanced Technical Depth">Balanced Technical Depth</SelectItem>
+              <SelectItem value="Executive Impact & Metrics Focus">Executive & Metrics</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
     </header>

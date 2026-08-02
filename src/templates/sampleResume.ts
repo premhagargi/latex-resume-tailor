@@ -1,5 +1,5 @@
 export const SAMPLE_LATEX_RESUME = `%==============================================================
-%  Prem Hagaragi — Endpoint Clinical: Front-End Engineer
+%  John Doe — Endpoint Clinical: Front-End Engineer
 %==============================================================
 \\documentclass[10pt,letterpaper]{article}
 
@@ -9,80 +9,104 @@ export const SAMPLE_LATEX_RESUME = `%===========================================
 \\usepackage{lmodern}
 \\usepackage{titlesec}
 \\usepackage{enumitem}
-  }
-}
+\\usepackage{xcolor}
+\\usepackage{fontawesome5}
+\\usepackage{hyperref}
 
-\\newcommand{\\resumeSubheading}[4]{
-  \\vspace{-1pt}\\item
-    \\begin{tabular*}{0.97\\textwidth}[t]{l@{\\extracolsep{\\fill}}r}
-      \\textbf{#1} & #2 \\\\
-      \\textit{\\small#3} & \\textit{\\small #4} \\\\
-    \\end{tabular*}\\vspace{-5pt}
-}
+\\definecolor{accent}{HTML}{004E90}
+\\definecolor{rulegray}{HTML}{9AA0A6}
+\\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
 
-\\newcommand{\\resumeSubItem}[1]{\\resumeItem{#1}\\vspace{-4pt}}
-\\renewcommand\\labelitemii{$\\vcenter{\\hbox{\\tiny$\\bullet$}}$}
-\\newcommand{\\resumeSubHeadingListStart}{\\begin{itemize}[leftmargin=0.15in, label={}]}
-\\newcommand{\\resumeSubHeadingListEnd}{\\end{itemize}}
-\\newcommand{\\resumeItemListStart}{\\begin{itemize}}
-\\newcommand{\\resumeItemListEnd}{\\end{itemize}\\vspace{-5pt}}
+\\titleformat{\\section}
+  {\\normalsize\\bfseries}{}{0em}{}[{\\color{rulegray}\\titlerule[0.7pt]}]
+\\titlespacing*{\\section}{0pt}{4pt}{2pt}
+
+\\setlist[itemize]{leftmargin=1.05em, itemsep=0.2pt, topsep=0.5pt,
+                  parsep=0pt, label=\\textbullet}
+
+\\newcommand{\\workentry}[3]{%
+  \\noindent\\textbf{#1}\\hfill{\\small\\itshape #3}\\par
+  \\noindent{\\small\\itshape #2}\\par\\vspace{0.5pt}%
+}
+\\newcommand{\\projentry}[2]{%
+  \\noindent\\textbf{\\href{#2}{#1}}\\,{\\footnotesize\\textcolor{accent}{\\faExternalLinkAlt}}%
+  \\par\\vspace{0.3pt}%
+}
+\\newcommand{\\skillrow}[2]{\\noindent\\textbf{#1:}\\ #2\\par\\vspace{1pt}}
+
+\\setlength{\\parindent}{0pt}
+\\pagestyle{empty}
+\\linespread{0.92}\\selectfont
 
 \\begin{document}
 
+%==================== HEADER ====================
 \\begin{center}
-    \\textbf{\\Huge \\scshape Prem Hagaragi} \\\\ \\vspace{1pt}
-    \\small +91-9876543210 $|$ \\href{mailto:prem.hagaragi@example.com}{\\underline{prem.hagaragi@example.com}} $|$ 
-    \\href{https://linkedin.com/in/premhagargi}{\\underline{linkedin.com/in/premhagargi}} $|$
-    \\href{https://github.com/premhagargi}{\\underline{github.com/premhagargi}}
+  {\\LARGE\\bfseries John Doe}\\\\[2pt]
+  {\\itshape\\color{accent} Front-End Engineer | React \\textbullet{} TypeScript \\textbullet{} Accessible, High-Performance Interfaces}\\\\[4pt]
+  {\\small
+    \\faEnvelope\\ \\href{mailto:johndoe@example.com}{johndoe@example.com}
+    \\quad\\textcolor{rulegray}{$|$}\\quad
+    \\faPhone\\ +1 555-019-2049
+    \\quad\\textcolor{rulegray}{$|$}\\quad
+    \\faGlobe\\ \\href{https://johndoe.dev/}{johndoe.dev}
+    \\quad\\textcolor{rulegray}{$|$}\\quad
+    \\faLinkedin\\ \\href{https://linkedin.com/in/johndoe}{linkedin.com/in/johndoe}
+  }
 \\end{center}
+\\vspace{-1pt}
 
-%----------- EXPERIENCE -----------
+%==================== SUMMARY ====================
+\\section{Professional Summary}
+Front-End Engineer with 3+ years of \\textbf{professional software development experience} building \\textbf{scalable, clean, and maintainable} web applications using \\textbf{React, JavaScript (ES6+), and TypeScript}. Experienced translating design specs into \\textbf{responsive, high-performance interfaces}, integrating \\textbf{RESTful APIs}, and writing \\textbf{unit and integration tests} (Jest, React Testing Library). Comfortable with \\textbf{modern state management} (Redux, Zustand, Context API), \\textbf{accessibility standards}, and \\textbf{CI/CD pipelines} in Agile/Scrum teams.
+
+%==================== EXPERIENCE ====================
 \\section{Experience}
-  \\resumeSubHeadingListStart
 
-    \\resumeSubheading
-      {Senior Fullstack Software Engineer}{Apr 2024 -- Present}
-      {TechCorp Solutions}{Bengaluru, India}
-      \\resumeItemListStart
-        \\resumeItem{Architected and deployed a distributed microservices platform using React, TypeScript, Node.js, and PostgreSQL, handling 2M+ daily active requests with 99.99\\% uptime.}
-        \\resumeItem{Optimized frontend bundle size by 42\\% and reduced initial page load latency from 2.8s to 650ms by implementing code-splitting, Webpack dynamic imports, and Redis edge caching.}
-        \\resumeItem{Designed real-time WebSockets and streaming infrastructure for low-latency messaging, improving data throughput by 3x during peak traffic events.}
-        \\resumeItem{Mentored a team of 5 engineers, introduced automated CI/CD pipelines via GitHub Actions and Docker, reducing deployment cycle times from 3 days to 15 minutes.}
-      \\resumeItemListEnd
+\\workentry{Software Developer}{Acme AI Corp --- AI-Native SaaS Platform}{Apr 2026 -- Present}
+\\begin{itemize}
+  \\item \\textbf{Scalable, maintainable front-end code:} Built \\textbf{React 19 + TypeScript} applications with a \\textbf{modular, reusable component library} --- dashboards, data tables, multi-step workflows --- using \\textbf{Tailwind CSS} and \\textbf{shadcn/ui}; components shared across three internal products.
+  \\item \\textbf{Design-to-code translation:} Translated product requirements and UI mockups into \\textbf{responsive web components} for a \\textbf{Next.js (App Router) + TypeScript} SaaS frontend --- dynamic kanban boards, interactive charts, and role-based dashboards.
+  \\item \\textbf{Performance \\& cross-browser compatibility:} Optimized applications for \\textbf{speed and cross-browser compatibility} via code splitting and lazy loading; state managed with \\textbf{Zustand} and \\textbf{Context API} patterns.
+  \\item \\textbf{RESTful API integration:} Integrated front-end applications with \\textbf{RESTful APIs} (Python + FastAPI) --- JWT/OTP auth, httpOnly refresh tokens, and JSON data contracts for secure, reliable data flow.
+  \\item \\textbf{Testing \\& code reviews:} Wrote \\textbf{unit and integration tests} (Vitest, React Testing Library); participated in \\textbf{code reviews} and design discussions; shipped via \\textbf{Docker + GitHub Actions CI/CD}.
+\\end{itemize}
 
-    \\resumeSubheading
-      {Software Development Engineer II}{Jan 2022 -- Mar 2024}
-      {Nexus Systems Inc}{Bengaluru, India}
-      \\resumeItemListStart
-        \\resumeItem{Engineered high-concurrency RESTful and GraphQL APIs using Golang and Express.js, serving 500k+ monthly active users.}
-        \\resumeItem{Implemented database indexing strategies and query optimizations in PostgreSQL and Redis, cutting p99 query latency by 68\\%.}
-        \\resumeItem{Integrated OAuth 2.0 and JWT security protocols, auditing system vulnerabilities and zero-day threats.}
-      \\resumeItemListEnd
+\\vspace{0.5pt}
+\\workentry{Software Developer}{Globex Consulting Private Limited --- E-Commerce \\& Enterprise Platforms}{Aug 2023 -- Mar 2026}
+\\begin{itemize}
+  \\item \\textbf{Responsive component development:} Built \\textbf{interactive, responsive UI components} with \\textbf{React, Angular, Next.js, Tailwind, and Material UI}, driving \\textbf{20\\% higher engagement} and \\textbf{15\\% better retention} across e-commerce platforms.
+  \\item \\textbf{RESTful API integration:} Designed and consumed \\textbf{RESTful APIs} with JSON data contracts for frontend--backend integration, reducing data overhead by \\textbf{25\\%}.
+  \\item \\textbf{State management \\& performance:} Used \\textbf{Redux} for state management; delivered \\textbf{performance optimization} via code splitting and lazy loading; ensured \\textbf{cross-browser compatibility} across supported platforms.
+  \\item \\textbf{Agile collaboration \\& CI/CD:} Collaborated with designers, product managers, and QA in \\textbf{Agile (Scrum)} sprints; automated deployments with \\textbf{GitLab CI/CD}, AWS S3, and CloudFront.
+\\end{itemize}
 
-  \\resumeSubHeadingListEnd
-
-%----------- PROJECTS -----------
+%==================== PROJECTS ====================
 \\section{Projects}
-  \\resumeSubHeadingListStart
-    \\resumeSubheading
-      {\\textbf{CueDesk AI Assist} $|$ \\emph{Electron, React, TypeScript, Deepgram, LLMs}}{May 2024 -- Present}
-      {Personal Project}{}
-      \\resumeItemListStart
-        \\resumeItem{Developed a stealth real-time AI copilot desktop application built on Electron, React, and Zustand, supporting live voice transcription via Deepgram WebSockets with sub-300ms latency.}
-        \\resumeItem{Implemented dynamic prompt engines and context windows using Cerebras Hardware SDK and Gemini 3.5, delivering stream-rendered interview solutions under 1.2 seconds.}
-      \\resumeItemListEnd
-  \\resumeSubHeadingListEnd
 
-%----------- TECHNICAL SKILLS -----------
+\\projentry{ArchForge --- Distributed Systems Design Platform}{https://archforge.example.com/}
+\\begin{itemize}
+  \\item Open-source \\textbf{React 19, TypeScript, Next.js 16} platform on an interactive canvas --- \\textbf{React Flow, Zustand} state management; built with attention to \\textbf{UI/UX detail} and responsive interaction patterns.
+\\end{itemize}
+
+\\vspace{0.5pt}
+\\projentry{FloodGate --- Distributed Rate Limiter (npm)}{https://floodgate-rl.example.com/}
+\\begin{itemize}
+  \\item Production-grade \\textbf{Node.js} rate limiter (npm: \\textbf{floodgate-rl}) with sliding-window and token-bucket algorithms backed by \\textbf{atomic Redis Lua scripts}; \\textbf{comprehensive automated test suites} for concurrency correctness.
+\\end{itemize}
+
+%==================== SKILLS ====================
 \\section{Technical Skills}
- \\begin{itemize}[leftmargin=0.15in, label={}]
-    \\small{\\item{
-     \\textbf{Languages}{: JavaScript, TypeScript, Python, Golang, HTML/CSS, SQL} \\\\
-     \\textbf{Frameworks}{: React.js, Next.js, Node.js, Express.js, TailwindCSS, Electron, Vite} \\\\
-     \\textbf{Infrastructure}{: Docker, Kubernetes, AWS (S3, EC2, Lambda), PostgreSQL, Redis, Git, CI/CD} \\\\
-     \\textbf{Concepts}{: System Design, Microservices, REST APIs, GraphQL, WebSockets, Performance Optimization, ATS Engineering}
-    }}
- \\end{itemize}
+\\skillrow{Frontend}{\\textbf{React.js} (18/19), \\textbf{TypeScript}, \\textbf{JavaScript (ES6+)}, Next.js, Angular; \\textbf{HTML5}, \\textbf{CSS3}, Tailwind CSS, shadcn/ui, Material UI}
+\\skillrow{State Management}{\\textbf{Redux}, \\textbf{Zustand}, \\textbf{Context API}, TanStack Query}
+\\skillrow{Testing \\& Build Tools}{\\textbf{Jest}, Vitest, \\textbf{React Testing Library}, unit \\& integration testing; \\textbf{Vite}, Webpack}
+\\skillrow{APIs \\& Backend}{\\textbf{RESTful APIs}, Python, FastAPI, Node.js, NestJS, JWT/OTP auth, secure API design}
+\\skillrow{CI/CD \\& Process}{\\textbf{GitHub Actions}, GitLab CI/CD, Docker, \\textbf{Git}; \\textbf{Agile/Scrum}, code reviews, cross-functional collaboration}
+
+%==================== EDUCATION ====================
+\\section{Education \\& Certifications}
+\\noindent\\textbf{Global Institute of Technology}, New York --- {\\small B.S., Computer Science --- GPA: 3.8/4.0}\\hfill{\\small\\itshape 2019--2023}\\\\
+{\\small\\textbf{Certs:} Micro Front-End Architecture with React (LinkedIn) \\textbullet{} CI/CD for Beginners (SimpliLearn, 2025)}
 
 \\end{document}
 `;
