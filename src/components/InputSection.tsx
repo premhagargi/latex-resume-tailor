@@ -62,13 +62,15 @@ export const InputSection: React.FC<InputSectionProps> = ({
             </div>
           </div>
         </div>
-        <div className="flex-1 p-0 relative bg-slate-50/30">
-          <Textarea
-            value={jobDescription}
-            onChange={(e) => onChangeJD(e.target.value)}
-            placeholder="Paste the target Job Description (Responsibilities, Tech Stack, Requirements)..."
-            className="w-full h-full absolute inset-0 border-0 bg-transparent text-slate-700 text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 p-5 overflow-y-auto"
-          />
+        <div className="flex-1 p-4 relative bg-slate-50/30">
+          <div className="absolute inset-4 rounded-xl border border-slate-200 bg-white shadow-inner focus-within:ring-2 focus-within:ring-[#da7756]/30 focus-within:border-[#da7756] transition-all overflow-hidden">
+            <Textarea
+              value={jobDescription}
+              onChange={(e) => onChangeJD(e.target.value)}
+              placeholder="Paste the target Job Description (Responsibilities, Tech Stack, Requirements)..."
+              className="w-full h-full border-0 bg-transparent text-slate-700 text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 p-4 overflow-y-auto"
+            />
+          </div>
         </div>
         <div className="p-3 bg-white border-t border-slate-100 flex items-center justify-between">
           <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1.5">
@@ -115,14 +117,16 @@ export const InputSection: React.FC<InputSectionProps> = ({
             </Button>
           </div>
         </div>
-        <div className="flex-1 p-0 relative bg-slate-50/30">
-          <Textarea
-            value={latexCode}
-            onChange={(e) => onChangeLatex(e.target.value)}
-            placeholder="Paste your original LaTeX resume code here..."
-            className="w-full h-full absolute inset-0 border-0 bg-transparent text-slate-800 font-mono text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 p-5 overflow-y-auto selection:bg-indigo-100 selection:text-indigo-900"
-            spellCheck={false}
-          />
+        <div className="flex-1 p-4 relative bg-slate-50/30">
+          <div className="absolute inset-4 rounded-xl border border-slate-200 bg-white shadow-inner focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-400 transition-all overflow-hidden group">
+            <Textarea
+              value={latexCode}
+              onChange={(e) => onChangeLatex(e.target.value)}
+              placeholder="Paste your original LaTeX resume code here..."
+              className="w-full h-full border-0 bg-transparent text-slate-800 font-mono text-xs leading-relaxed rounded-none resize-none focus-visible:ring-0 p-4 overflow-y-auto selection:bg-indigo-100 selection:text-indigo-900"
+              spellCheck={false}
+            />
+          </div>
         </div>
       </Card>
     </>
