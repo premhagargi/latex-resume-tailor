@@ -49,20 +49,19 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
           <Select value={settings.provider} onValueChange={(val) => onUpdateSettings({ provider: val as AIProvider })}>
             <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[140px] px-2 gap-2">
-              <img src={PROVIDER_LOGOS[settings.provider]} alt="" className="w-4 h-4 rounded-sm shrink-0" />
               <SelectValue placeholder="Provider" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="cerebras">
                 <div className="flex items-center gap-2">
                   <img src={PROVIDER_LOGOS.cerebras} alt="" className="w-4 h-4 rounded-sm" />
-                  <span>Cerebras AI</span>
+                  <span>Cerebras</span>
                 </div>
               </SelectItem>
               <SelectItem value="gemini">
                 <div className="flex items-center gap-2">
                   <img src={PROVIDER_LOGOS.gemini} alt="" className="w-4 h-4" />
-                  <span>Google Gemini</span>
+                  <span>Gemini</span>
                 </div>
               </SelectItem>
             </SelectContent>
@@ -73,7 +72,6 @@ export const Header: React.FC<HeaderProps> = ({
           {settings.provider === 'cerebras' ? (
             <Select value={settings.cerebrasModel} onValueChange={(val) => onUpdateSettings({ cerebrasModel: val as CerebrasModel })}>
               <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[160px] px-2 gap-2">
-                <img src={MODEL_LOGOS[settings.cerebrasModel as keyof typeof MODEL_LOGOS]} alt="" className="w-4 h-4 rounded-sm shrink-0" />
                 <SelectValue placeholder="Model" />
               </SelectTrigger>
               <SelectContent>
@@ -100,7 +98,6 @@ export const Header: React.FC<HeaderProps> = ({
           ) : (
             <Select value={settings.geminiModel} onValueChange={(val) => onUpdateSettings({ geminiModel: val as GeminiModel })}>
               <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[170px] px-2 gap-2">
-                <img src={MODEL_LOGOS[settings.geminiModel as keyof typeof MODEL_LOGOS]} alt="" className="w-4 h-4 shrink-0" />
                 <SelectValue placeholder="Model" />
               </SelectTrigger>
               <SelectContent>
