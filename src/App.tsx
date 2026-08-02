@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { AISettings, OptimizationLevel, OptimizationResult } from './types';
-import { SAMPLE_LATEX_RESUME, SAMPLE_JOB_DESCRIPTION } from './templates/sampleResume';
+
 import { optimizeLatexResume } from './services/ai';
 import { Header } from './components/Header';
 import { InputSection } from './components/InputSection';
@@ -18,9 +18,9 @@ const DEFAULT_SETTINGS: AISettings = {
 
 export function App() {
   const [settings, setSettings] = useState<AISettings>(DEFAULT_SETTINGS);
-  const [latexCode, setLatexCode] = useState(SAMPLE_LATEX_RESUME);
-  const [jobDescription, setJobDescription] = useState(SAMPLE_JOB_DESCRIPTION);
-  const [companyTarget, setCompanyTarget] = useState('Stripe / Tier-1 Product');
+  const [latexCode, setLatexCode] = useState('');
+  const [jobDescription, setJobDescription] = useState('');
+  const [companyTarget, setCompanyTarget] = useState('');
   const [optimizationLevel, setOptimizationLevel] = useState<OptimizationLevel>('Aggressive ATS Match (95%+ Target)');
 
   const [isProcessing, setIsProcessing] = useState(false);

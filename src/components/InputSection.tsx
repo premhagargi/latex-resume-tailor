@@ -65,7 +65,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
           value={jobDescription}
           onChange={(e) => onChangeJD(e.target.value)}
           placeholder="Paste the target Job Description (Responsibilities, Tech Stack, Requirements)..."
-          className="w-full h-full border-0 bg-transparent text-slate-700 text-xs leading-relaxed rounded-2xl resize-none focus-visible:ring-2 focus-visible:ring-[#da7756]/40 focus-visible:border-[#da7756] p-5 pt-16 pb-16 overflow-y-auto"
+          className="w-full h-full border-0 bg-transparent text-slate-700 text-xs leading-relaxed rounded-2xl resize-none focus-visible:ring-0 p-5 pt-16 pb-16 overflow-y-auto"
         />
 
         <div className="absolute bottom-3 right-3 z-10 pointer-events-auto">
@@ -112,7 +112,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
           value={latexCode}
           onChange={(e) => onChangeLatex(e.target.value)}
           placeholder="Paste your original LaTeX resume code here..."
-          className="w-full h-full border-0 bg-transparent text-slate-800 font-mono text-xs leading-relaxed rounded-2xl resize-none focus-visible:ring-2 focus-visible:ring-indigo-500/30 focus-visible:border-indigo-400 p-5 pt-16 pb-16 overflow-y-auto selection:bg-indigo-100 selection:text-indigo-900"
+          className="w-full h-full border-0 bg-transparent text-slate-800 font-mono text-xs leading-relaxed rounded-2xl resize-none focus-visible:ring-0 p-5 pt-16 pb-16 overflow-y-auto selection:bg-indigo-100 selection:text-indigo-900"
           spellCheck={false}
         />
       </Card>
