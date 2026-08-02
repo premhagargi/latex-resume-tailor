@@ -19,19 +19,53 @@ MISSING CRITICAL KEYWORDS: ${currentScore.missing.join(', ')}
 
 Please use these actual metrics as your baseline for "beforeAtsScore" and ensure you integrate the missing keywords organically.`;
 
-  let result: OptimizationResult;
-  if (settings.provider === 'cerebras') {
-    result = await callCerebras(prompt, settings);
-  } else {
-    result = await callGemini(prompt, settings);
-  }
+  let attempts = 0;
+  const MAX_ATTEMPTS = 2;
+  
+  while (attempts < MAX_ATTEMPTS) {
+    attempts++;
+    try {
+      let result: OptimizationResult;
+      if (settings.provider === 'cerebras') {
+        result = await callCerebras(prompt, settings);
+      } else {
+        result = await callGemini(prompt, settings);
+      }
 
-  // Preserve the structure just in case the LLM truncated the preamble
-  if (result.tailoredLatex) {
-    result.tailoredLatex = preserveLatexSyntax(request.latexCode, result.tailoredLatex);
-  }
+      // Preserve the structure just in case the LLM truncated the preamble
+      if (result.tailoredLatex) {
+        result.tailoredLatex = preserveLatexSyntax(request.latexCode, result.tailoredLatex);
+      }
+      
+      // Validation Guard
+      if (!validateContactInfo(request.latexCode, result.tailoredLatex)) {
+        throw new Error('Something went wrong — the output didn\'t preserve your original details. Please try again.');
+      }
 
-  return result;
+      return result;
+    } catch (err: any) {
+      if (attempts >= MAX_ATTEMPTS) {
+        throw err;
+      }
+      console.warn(`Optimization attempt ${attempts} failed. Retrying...`, err);
+    }
+  }
+  
+  throw new Error('Optimization failed after retries.');
+}
+
+function validateContactInfo(original: string, tailored: string): boolean {
+  const emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
+  const originalEmails = original.match(emailRegex) || [];
+  
+  const tailoredLower = tailored.toLowerCase();
+  for (const email of originalEmails) {
+    if (!tailoredLower.includes(email.toLowerCase())) {
+      console.error(`Validation failed: missing ${email}`);
+      return false;
+    }
+  }
+  return true;
 }
 
 async function callCerebras(

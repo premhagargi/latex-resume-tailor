@@ -28,6 +28,7 @@ CRITICAL RULES:
 3. ESCAPE SPECIAL SYMBOLS in bullet texts: (%, $, &, _, #).
 4. Apply Google's XYZ Formula to EVERY bullet point: "Accomplished [X], as measured by [Y], by doing [Z]".
 5. Maximize keyword matching from the Job Description into the Experience and Skills sections naturally.
+6. NEVER reuse any name, email, phone number, or link from any example or template. ALWAYS extract and use the exact actual contact details from the user's pasted resume. If you replace the user's phone number or email, the generation will be rejected.
 
 RETURN FORMAT:
 You MUST respond with valid JSON ONLY (no markdown formatting outside the JSON, or wrap strictly in \`\`\`json ... \`\`\`).

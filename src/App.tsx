@@ -95,10 +95,13 @@ export function App() {
       </main>
 
       <Dialog open={!!result} onOpenChange={(open) => { if (!open) setResult(null); }}>
-        <DialogContent className="max-w-6xl h-[90vh] p-0 overflow-hidden flex flex-col bg-slate-50 border-none shadow-2xl rounded-2xl">
+        <DialogContent 
+          showCloseButton={false} 
+          className="w-full max-w-none md:w-[85vw] h-[100vh] md:h-[85vh] p-0 overflow-hidden flex flex-col bg-slate-50 border-none shadow-2xl md:rounded-2xl"
+        >
           <DialogTitle className="hidden">Optimization Result</DialogTitle>
           <DialogDescription className="hidden">Your tailored resume output</DialogDescription>
-          {result && <OutputSection result={result} />}
+          {result && <OutputSection result={result} onClose={() => setResult(null)} />}
         </DialogContent>
       </Dialog>
     </div>
