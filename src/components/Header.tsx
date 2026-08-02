@@ -48,10 +48,10 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center gap-2.5">
         <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
           <Select value={settings.provider} onValueChange={(val) => onUpdateSettings({ provider: val as AIProvider })}>
-            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[140px] px-2 gap-2">
+            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[140px] px-2 gap-2">
               <SelectValue placeholder="Provider" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[150px]">
               <SelectItem value="cerebras">
                 <div className="flex items-center gap-2">
                   <img src={PROVIDER_LOGOS.cerebras} alt="" className="w-4 h-4 rounded-sm" />
@@ -71,36 +71,36 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
           {settings.provider === 'cerebras' ? (
             <Select value={settings.cerebrasModel} onValueChange={(val) => onUpdateSettings({ cerebrasModel: val as CerebrasModel })}>
-              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[160px] px-2 gap-2">
+              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[160px] px-2 gap-2">
                 <SelectValue placeholder="Model" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[170px]">
                 <SelectItem value="gpt-oss-120b">
                   <div className="flex items-center gap-2">
                     <img src={MODEL_LOGOS["gpt-oss-120b"]} alt="" className="w-4 h-4 rounded-sm" />
-                    <span>gpt-oss-120b</span>
+                    <span>GPT-OSS 120B</span>
                   </div>
                 </SelectItem>
                 <SelectItem value="gemma-4-31b">
                   <div className="flex items-center gap-2">
                     <img src={MODEL_LOGOS["gemma-4-31b"]} alt="" className="w-4 h-4" />
-                    <span>gemma-4-31b</span>
+                    <span>Gemma 4 31B</span>
                   </div>
                 </SelectItem>
                 <SelectItem value="zai-glm-4.7">
                   <div className="flex items-center gap-2">
                     <img src={MODEL_LOGOS["zai-glm-4.7"]} alt="" className="w-4 h-4" />
-                    <span>zai-glm-4.7</span>
+                    <span>ZAI GLM 4.7</span>
                   </div>
                 </SelectItem>
               </SelectContent>
             </Select>
           ) : (
             <Select value={settings.geminiModel} onValueChange={(val) => onUpdateSettings({ geminiModel: val as GeminiModel })}>
-              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[170px] px-2 gap-2">
+              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[180px] px-2 gap-2">
                 <SelectValue placeholder="Model" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[190px]">
                 <SelectItem value="gemini-2.5-flash">
                   <div className="flex items-center gap-2">
                     <img src={MODEL_LOGOS["gemini-2.5-flash"]} alt="" className="w-4 h-4" />
@@ -120,10 +120,10 @@ export const Header: React.FC<HeaderProps> = ({
 
         <div className="hidden lg:flex items-center bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
           <Select value={optimizationLevel} onValueChange={(val) => onUpdateOptimizationLevel(val as OptimizationLevel)}>
-            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 w-[190px]">
+            <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[200px]">
               <SelectValue placeholder="Optimization" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[220px]">
               <SelectItem value="Aggressive ATS Match (95%+ Target)">Aggressive ATS</SelectItem>
               <SelectItem value="Balanced Technical Depth">Balanced Technical Depth</SelectItem>
               <SelectItem value="Executive Impact & Metrics Focus">Executive & Metrics</SelectItem>
