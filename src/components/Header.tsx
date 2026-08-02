@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({
   onUpdateOptimizationLevel
 }) => {
   return (
-    <header className="flex-none bg-white border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm z-40">
+    <header className="flex-none bg-transparent px-5 pt-5 pb-2 flex flex-wrap items-center justify-between gap-4 z-40">
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
           <img src="/favicon.svg" alt="ResuMatch AI" className="w-full h-full object-contain" />

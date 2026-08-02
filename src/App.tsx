@@ -69,7 +69,7 @@ export function App() {
         onUpdateOptimizationLevel={setOptimizationLevel}
       />
 
-      <main className="flex-1 overflow-hidden p-4 flex flex-col gap-4 max-w-[100vw]">
+      <main className="flex-1 overflow-hidden px-5 pb-5 flex flex-col gap-4 max-w-[100vw]">
         {error && (
           <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center justify-between shrink-0 shadow-sm">
             <div className="flex items-center gap-2">

@@ -22,8 +22,8 @@
 
 /* Custom scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -31,12 +31,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  background: #cbd5e1; /* slate-300 */
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: #94a3b8; /* slate-400 */
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 @theme inline {
