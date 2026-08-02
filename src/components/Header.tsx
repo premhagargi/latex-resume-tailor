@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="flex-none bg-white border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm z-40">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden p-1.5">
+        <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
           <img src="/favicon.svg" alt="ResuMatch AI" className="w-full h-full object-contain" />
         </div>
         <div>

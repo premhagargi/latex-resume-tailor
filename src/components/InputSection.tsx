@@ -78,9 +78,9 @@ export const InputSection: React.FC<InputSectionProps> = ({
           <Button
             onClick={onOptimize}
             disabled={isProcessing || !latexCode.trim() || !jobDescription.trim()}
-            className="h-9 text-xs font-semibold px-5 rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white shadow-sm shadow-slate-900/20 transition-all"
+            className="h-9 text-xs font-semibold px-5 rounded-lg bg-[#da7756] hover:bg-[#c86a4c] text-white shadow-sm shadow-[#da7756]/20 transition-all"
           >
-            <Sparkles className={`w-3.5 h-3.5 mr-2 text-blue-200 ${isProcessing ? 'animate-spin' : ''}`} />
+            <Sparkles className={`w-3.5 h-3.5 mr-2 text-white/90 ${isProcessing ? 'animate-spin' : ''}`} />
             {isProcessing ? 'Analyzing & Tailoring...' : 'Tailor Resume'}
           </Button>
         </div>

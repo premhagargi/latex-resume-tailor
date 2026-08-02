@@ -104,7 +104,7 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result }) => {
 
           <Button
             onClick={handleDownload}
-            className="flex items-center gap-1.5 h-7 px-3 rounded-md bg-slate-900 hover:bg-slate-800 text-white font-medium text-[10px] shadow-sm"
+            className="flex items-center gap-1.5 h-7 px-3 rounded-md bg-[#da7756] hover:bg-[#c86a4c] text-white font-medium text-[10px] shadow-sm"
           >
             <Download className="w-3 h-3" />
             <span>Download</span>
