@@ -1,41 +1,14 @@
-export const SAMPLE_LATEX_RESUME = `\\documentclass[letterpaper,11pt]{article}
+export const SAMPLE_LATEX_RESUME = `%==============================================================
+%  Prem Hagaragi — Endpoint Clinical: Front-End Engineer
+%==============================================================
+\\documentclass[10pt,letterpaper]{article}
 
-\\usepackage{latexsym}
-\\usepackage[empty]{fullpage}
+\\usepackage[top=0.32in,bottom=0.32in,left=0.48in,right=0.48in]{geometry}
+\\usepackage[T1]{fontenc}
+\\usepackage[utf8]{inputenc}
+\\usepackage{lmodern}
 \\usepackage{titlesec}
-\\usepackage{marvosym}
-\\usepackage[usenames,dvipsnames]{color}
-\\usepackage{verbatim}
 \\usepackage{enumitem}
-\\usepackage[hidelinks]{hyperref}
-\\usepackage{fancyhdr}
-\\usepackage[english]{babel}
-\\usepackage{tabularx}
-
-\\pagestyle{fancy}
-\\fancyhf{} 
-\\fancyfoot{}
-\\renewcommand{\\headrulewidth}{0pt}
-\\renewcommand{\\footrulewidth}{0pt}
-
-\\addtolength{\\oddsidemargin}{-0.5in}
-\\addtolength{\\evensidemargin}{-0.5in}
-\\addtolength{\\textwidth}{1.0in}
-\\addtolength{\\topmargin}{-.5in}
-\\addtolength{\\textheight}{1.0in}
-
-\\urlstyle{same}
-\\raggedbottom
-\\raggedright
-\\setlength{\\tabcolsep}{0in}
-
-\\titleformat{\\section}{
-  \\vspace{-4pt}\\scshape\\raggedright\\large
-}{}{0em}{}[\\color{black}\\vline height 1.5pt width \\linewidth\\vspace{-5pt}]
-
-\\newcommand{\\resumeItem}[1]{
-  \\item\\small{
-    {#1 \\vspace{-2pt}}
   }
 }
 

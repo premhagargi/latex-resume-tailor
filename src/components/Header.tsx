@@ -1,31 +1,25 @@
 import React from 'react';
-import type { AISettings, AIProvider, CerebrasModel, GeminiModel, RoleLevel, OptimizationLevel } from '../types';
-import { Sparkles, Settings, Zap, ShieldCheck, Cpu } from 'lucide-react';
+import type { AISettings, AIProvider, CerebrasModel, GeminiModel, OptimizationLevel } from '../types';
+import { ShieldCheck, Cpu, Zap } from 'lucide-react';
 
 interface HeaderProps {
   settings: AISettings;
   onUpdateSettings: (newSettings: Partial<AISettings>) => void;
-  targetRole: RoleLevel;
-  onUpdateRole: (role: RoleLevel) => void;
   optimizationLevel: OptimizationLevel;
   onUpdateOptimizationLevel: (opt: OptimizationLevel) => void;
-  onOpenSettings: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   settings,
   onUpdateSettings,
-  targetRole,
-  onUpdateRole,
   optimizationLevel,
-  onUpdateOptimizationLevel,
-  onOpenSettings
+  onUpdateOptimizationLevel
 }) => {
   return (
     <header className="flex-none bg-white border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-4 shadow-sm z-40">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center">
-          <Sparkles className="w-4 h-4 text-slate-700" />
+        <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden p-1.5">
+          <img src="/favicon.svg" alt="ResuMatch AI" className="w-full h-full object-contain" />
         </div>
         <div>
           <div className="flex items-center gap-2">
@@ -74,19 +68,6 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        <div className="hidden md:flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-1 text-xs hover:border-slate-300 transition-colors">
-          <select
-            value={targetRole}
-            onChange={(e) => onUpdateRole(e.target.value as RoleLevel)}
-            className="bg-transparent text-slate-700 font-medium outline-none py-1 px-2 cursor-pointer text-xs"
-          >
-            <option value="Senior Software Engineer">Senior Software Engineer</option>
-            <option value="Staff / Lead Engineer">Staff / Lead Engineer</option>
-            <option value="Fullstack Product Engineer">Fullstack Product Engineer</option>
-            <option value="AI / Machine Learning Engineer">AI / ML Specialist</option>
-          </select>
-        </div>
-
         <div className="hidden lg:flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-1 text-xs hover:border-slate-300 transition-colors">
           <select
             value={optimizationLevel}
@@ -98,14 +79,6 @@ export const Header: React.FC<HeaderProps> = ({
             <option value="Executive Impact & Metrics Focus">Executive & Metrics</option>
           </select>
         </div>
-
-        <button
-          onClick={onOpenSettings}
-          className="p-1.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-500 hover:text-slate-700 transition-colors"
-          title="Manage API Keys"
-        >
-          <Settings className="w-4 h-4" />
-        </button>
       </div>
     </header>
   );

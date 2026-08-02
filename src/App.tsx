@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import type { AISettings, RoleLevel, OptimizationLevel, OptimizationResult } from './types';
+import { useState } from 'react';
+import type { AISettings, OptimizationLevel, OptimizationResult } from './types';
 import { SAMPLE_LATEX_RESUME, SAMPLE_JOB_DESCRIPTION } from './templates/sampleResume';
 import { optimizeLatexResume } from './services/ai';
 import { Header } from './components/Header';
 import { InputSection } from './components/InputSection';
 import { OutputSection } from './components/OutputSection';
-import { SettingsModal } from './components/SettingsModal';
 import { AlertTriangle } from 'lucide-react';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from './components/ui/dialog';
 
 const DEFAULT_SETTINGS: AISettings = {
   provider: 'cerebras',
@@ -17,32 +17,15 @@ const DEFAULT_SETTINGS: AISettings = {
 };
 
 export function App() {
-  const [settings, setSettings] = useState<AISettings>(() => {
-    const saved = localStorage.getItem('resumatch_ai_settings');
-    if (saved) {
-      try {
-        return { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
-      } catch (e) {
-        console.error('Failed to parse saved settings:', e);
-      }
-    }
-    return DEFAULT_SETTINGS;
-  });
-
+  const [settings, setSettings] = useState<AISettings>(DEFAULT_SETTINGS);
   const [latexCode, setLatexCode] = useState(SAMPLE_LATEX_RESUME);
   const [jobDescription, setJobDescription] = useState(SAMPLE_JOB_DESCRIPTION);
-  const [targetRole, setTargetRole] = useState<RoleLevel>('Senior Software Engineer');
   const [companyTarget, setCompanyTarget] = useState('Stripe / Tier-1 Product');
   const [optimizationLevel, setOptimizationLevel] = useState<OptimizationLevel>('Aggressive ATS Match (95%+ Target)');
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState<OptimizationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem('resumatch_ai_settings', JSON.stringify(settings));
-  }, [settings]);
 
   const handleUpdateSettings = (partial: Partial<AISettings>) => {
     setSettings((prev) => ({ ...prev, ...partial }));
@@ -62,17 +45,13 @@ export function App() {
         {
           latexCode,
           jobDescription,
-          targetRole,
+          targetRole: 'Senior Software Engineer', // Defaulted now since UI is removed
           companyTarget,
           optimizationLevel
         },
         settings
       );
       setResult(res);
-      // Smooth scroll down to output
-      setTimeout(() => {
-        window.scrollTo({ top: 600, behavior: 'smooth' });
-      }, 100);
     } catch (err: any) {
       console.error('Optimization error:', err);
       setError(err.message || 'An error occurred during resume optimization. Please try again.');
@@ -86,11 +65,8 @@ export function App() {
       <Header
         settings={settings}
         onUpdateSettings={handleUpdateSettings}
-        targetRole={targetRole}
-        onUpdateRole={setTargetRole}
         optimizationLevel={optimizationLevel}
         onUpdateOptimizationLevel={setOptimizationLevel}
-        onOpenSettings={() => setIsSettingsOpen(true)}
       />
 
       <main className="flex-1 overflow-hidden p-4 flex flex-col gap-4 max-w-[100vw]">
@@ -104,7 +80,7 @@ export function App() {
           </div>
         )}
 
-        <div className={`flex-1 min-h-0 grid gap-4 ${result ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1 lg:grid-cols-2'}`}>
+        <div className="flex-1 min-h-0 grid gap-4 grid-cols-1 lg:grid-cols-2">
           <InputSection
             latexCode={latexCode}
             onChangeLatex={setLatexCode}
@@ -115,16 +91,16 @@ export function App() {
             isProcessing={isProcessing}
             onOptimize={handleOptimize}
           />
-          {result && <OutputSection result={result} />}
         </div>
       </main>
 
-      <SettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-        settings={settings}
-        onSave={(newSettings) => setSettings(newSettings)}
-      />
+      <Dialog open={!!result} onOpenChange={(open) => { if (!open) setResult(null); }}>
+        <DialogContent className="max-w-6xl h-[90vh] p-0 overflow-hidden flex flex-col bg-slate-50 border-none shadow-2xl rounded-2xl">
+          <DialogTitle className="hidden">Optimization Result</DialogTitle>
+          <DialogDescription className="hidden">Your tailored resume output</DialogDescription>
+          {result && <OutputSection result={result} />}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
