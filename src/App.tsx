@@ -12,8 +12,8 @@ const DEFAULT_SETTINGS: AISettings = {
   provider: 'cerebras',
   cerebrasModel: 'gpt-oss-120b',
   geminiModel: 'gemini-2.5-flash',
-  cerebrasApiKey: '',
-  geminiApiKey: ''
+  cerebrasApiKey: import.meta.env.VITE_CEREBRAS_API_KEY || '',
+  geminiApiKey: import.meta.env.VITE_GEMINI_API_KEY || ''
 };
 
 export function App() {
