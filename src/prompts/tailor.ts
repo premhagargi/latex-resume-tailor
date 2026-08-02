@@ -26,9 +26,28 @@ CRITICAL RULES:
 1. DO NOT invent false experience, fake companies, or false degrees.
 2. PRESERVE ALL LATEX STRUCTURE, COMMANDS, MACROS, AND PACKAGES EXACTLY. Do NOT break LaTeX compilation.
 3. ESCAPE SPECIAL SYMBOLS in bullet texts: (%, $, &, _, #).
-4. Apply Google's XYZ Formula to EVERY bullet point: "Accomplished [X], as measured by [Y], by doing [Z]".
+4. BULLET STRUCTURE — XYZ PRINCIPLE (not a literal template):
+   Every bullet should communicate three things, in this logical order:
+     1. WHAT you achieved (the outcome/result)
+     2. HOW MUCH / measured by what (a concrete metric, when one genuinely exists in the source material)
+     3. HOW you did it (the method/technology)
+   This is a STRUCTURAL principle, not a sentence template. NEVER use the literal
+   phrases "Accomplished," "as measured by," or "by doing" as recurring boilerplate.
+   Across a full resume, no two bullets should open with the same word or follow
+   an identical grammatical pattern.
+   Vary sentence construction using natural resume phrasing. Rotate through
+   different openings and structures, for example:
+     - Action-verb-first: "Built a component library adopted across 3 products, cutting UI implementation time by 30%."
+     - Outcome-first: "Cut page load times 25% by implementing code-splitting and lazy loading across the SPA."
+     - Method-embedded: "Integrated RESTful APIs with JWT-based auth, achieving reliable authenticated request handling across the platform."
+   Use a genuinely varied set of strong action verbs across the resume — Built, Architected, Reduced, Drove, Shipped, Led, Designed, Implemented, Optimized, Delivered, Automated, Streamlined — and do not reuse the same opening verb more than twice in the full document.
 5. Maximize keyword matching from the Job Description into the Experience and Skills sections naturally.
 6. NEVER reuse any name, email, phone number, or link from any example or template. ALWAYS extract and use the exact actual contact details from the user's pasted resume. If you replace the user's phone number or email, the generation will be rejected.
+7. CRITICAL — NEVER FABRICATE EXPERIENCE OR METRICS:
+   - You may ONLY rewrite bullets that describe work already present in the source resume. You may rephrase, reorder, and re-emphasize existing content — you may NEVER invent a new responsibility, technology, project, or accomplishment that does not appear in the source resume, even if the target job description asks for it.
+   - If the job description requires a skill/technology that genuinely does NOT appear anywhere in the source resume, DO NOT add a bullet claiming that experience. Instead: leave it out of the experience bullets entirely, OR if a closely related technology IS present, you may mention the related technology honestly without claiming the missing one. Note it in the JSON analysis output's "missingKeywordsAdded" field so the user knows it's a real gap, not something to fake.
+   - NEVER invent a specific quantified metric (percentage, count, time duration, latency figure, concurrency number) unless: The exact number already appears in the source resume, OR The source resume describes the work in a way that makes a conservative, clearly-labeled estimate reasonable (e.g., source says "built a component library used across the product" → acceptable to say "used across 3 product surfaces" ONLY IF the source resume actually states or clearly implies 3 surfaces — never invent a number that isn't grounded in the source text). When in doubt, do NOT add a number. A bullet without a fabricated metric is always better than a bullet with an invented one.
+   - Test yourself before finalizing output: for every single bullet, ask "Is this describing something the source resume actually says the candidate did, or am I inferring/inventing new work?" If you cannot point to the specific sentence in the source resume that this bullet is derived from, DELETE the fabricated part and rewrite using only what the source actually supports.
 
 RETURN FORMAT:
 You MUST respond with valid JSON ONLY (no markdown formatting outside the JSON, or wrap strictly in \`\`\`json ... \`\`\`).
@@ -43,8 +62,9 @@ The JSON object must match this exact schema:
     {
       "section": "Experience - TechCorp",
       "originalBullet": "Original text",
-      "optimizedBullet": "Optimized text with XYZ",
-      "reason": "Why it was changed"
+      "optimizedBullet": "Optimized text grounded in original",
+      "reason": "Why it was changed and/or any inference made",
+      "sourceGrounded": true
     }
   ],
   "executiveSummary": "Concise strategy summary."

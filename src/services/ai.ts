@@ -139,7 +139,13 @@ function parseResultJson(text: string): OptimizationResult {
       afterAtsScore: Number(parsed.afterAtsScore) || 95,
       matchedKeywords: Array.isArray(parsed.matchedKeywords) ? parsed.matchedKeywords : [],
       missingKeywordsAdded: Array.isArray(parsed.missingKeywordsAdded) ? parsed.missingKeywordsAdded : [],
-      keyChanges: Array.isArray(parsed.keyChanges) ? parsed.keyChanges : [],
+      keyChanges: Array.isArray(parsed.keyChanges) ? parsed.keyChanges.map((kc: any) => ({
+        section: kc.section || '',
+        originalBullet: kc.originalBullet || '',
+        optimizedBullet: kc.optimizedBullet || '',
+        reason: kc.reason || '',
+        sourceGrounded: !!kc.sourceGrounded
+      })) : [],
       executiveSummary: parsed.executiveSummary || 'Resume tailored successfully.'
     };
   } catch (err: any) {

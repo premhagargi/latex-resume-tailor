@@ -29,6 +29,7 @@ export interface KeyChange {
   originalBullet: string;
   optimizedBullet: string;
   reason: string;
+  sourceGrounded: boolean;
 }
 
 export interface OptimizationResult {

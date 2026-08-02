@@ -206,7 +206,14 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result, onClose })
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider">Optimized</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider">Optimized</span>
+                        {!change.sourceGrounded && (
+                          <span className="px-1.5 py-0.5 rounded bg-amber-100 border border-amber-200 text-amber-700 text-[9px] font-bold uppercase tracking-wider flex items-center gap-1" title="This bullet contains inferred details not explicitly in the original resume">
+                            Inferred Details
+                          </span>
+                        )}
+                      </div>
                       <p className="text-slate-900 font-medium leading-relaxed">{change.optimizedBullet}</p>
                     </div>
                   </div>
