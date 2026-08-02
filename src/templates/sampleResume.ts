@@ -63,7 +63,7 @@ Front-End Engineer with 3+ years of \\textbf{professional software development e
 %==================== EXPERIENCE ====================
 \\section{Experience}
 
-\\workentry{Software Developer}{Acme AI Corp --- AI-Native SaaS Platform}{Apr 2026 -- Present}
+\\workentry{Software Developer}{Acme AI (Acme AI LLP) --- AI-Native SaaS Platform}{Apr 2026 -- Present}
 \\begin{itemize}
   \\item \\textbf{Scalable, maintainable front-end code:} Built \\textbf{React 19 + TypeScript} applications with a \\textbf{modular, reusable component library} --- dashboards, data tables, multi-step workflows --- using \\textbf{Tailwind CSS} and \\textbf{shadcn/ui}; components shared across three internal products.
   \\item \\textbf{Design-to-code translation:} Translated product requirements and UI mockups into \\textbf{responsive web components} for a \\textbf{Next.js (App Router) + TypeScript} SaaS frontend --- dynamic kanban boards, interactive charts, and role-based dashboards.
@@ -105,7 +105,7 @@ Front-End Engineer with 3+ years of \\textbf{professional software development e
 
 %==================== EDUCATION ====================
 \\section{Education \\& Certifications}
-\\noindent\\textbf{Global Institute of Technology}, New York --- {\\small B.S., Computer Science --- GPA: 3.8/4.0}\\hfill{\\small\\itshape 2019--2023}\\\\
+\\noindent\\textbf{Global Institute of Technology}, New York --- {\\small B.E., Computer Science --- CGPA: 8.1/10}\\hfill{\\small\\itshape 2019--2023}\\\\
 {\\small\\textbf{Certs:} Micro Front-End Architecture with React (LinkedIn) \\textbullet{} CI/CD for Beginners (SimpliLearn, 2025)}
 
 \\end{document}
