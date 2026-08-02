@@ -49,7 +49,7 @@ export const SAMPLE_LATEX_RESUME = `%===========================================
     \\quad\\textcolor{rulegray}{$|$}\\quad
     \\faPhone\\ +1 555-019-2049
     \\quad\\textcolor{rulegray}{$|$}\\quad
-    \\faGlobe\\ \\href{https://johndoe.dev/}{johndoe.dev}
+    \\faGlobe\\ \\href{https://johndoe.app/}{johndoe.app}
     \\quad\\textcolor{rulegray}{$|$}\\quad
     \\faLinkedin\\ \\href{https://linkedin.com/in/johndoe}{linkedin.com/in/johndoe}
   }
