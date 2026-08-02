@@ -50,11 +50,26 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
             {settings.provider === 'cerebras' ? (
               <Select value={settings.cerebrasModel} onValueChange={(val) => onUpdateSettings({ cerebrasModel: val as CerebrasModel })}>
-                <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[150px] px-2 gap-2 flex items-center">
-                  {settings.cerebrasModel && (
-                    <img src={MODEL_LOGOS[settings.cerebrasModel as keyof typeof MODEL_LOGOS]} alt="" className="w-4 h-4 rounded-sm shrink-0" />
+                <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[150px] px-2 gap-2">
+                  {settings.cerebrasModel === 'gpt-oss-120b' && (
+                    <div className="flex items-center gap-2">
+                      <img src={MODEL_LOGOS["gpt-oss-120b"]} alt="" className="w-4 h-4 rounded-sm" />
+                      <span>GPT-OSS 120B</span>
+                    </div>
                   )}
-                  <SelectValue placeholder="Model" />
+                  {settings.cerebrasModel === 'gemma-4-31b' && (
+                    <div className="flex items-center gap-2">
+                      <img src={MODEL_LOGOS["gemma-4-31b"]} alt="" className="w-4 h-4" />
+                      <span>Gemma 4 31B</span>
+                    </div>
+                  )}
+                  {settings.cerebrasModel === 'zai-glm-4.7' && (
+                    <div className="flex items-center gap-2">
+                      <img src={MODEL_LOGOS["zai-glm-4.7"]} alt="" className="w-4 h-4" />
+                      <span>ZAI GLM 4.7</span>
+                    </div>
+                  )}
+                  {!settings.cerebrasModel && <span className="text-slate-400">Model</span>}
                 </SelectTrigger>
                 <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[170px]">
                   <SelectItem value="gpt-oss-120b">
@@ -79,11 +94,20 @@ export const Header: React.FC<HeaderProps> = ({
               </Select>
             ) : (
               <Select value={settings.geminiModel} onValueChange={(val) => onUpdateSettings({ geminiModel: val as GeminiModel })}>
-                <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[170px] px-2 gap-2 flex items-center">
-                  {settings.geminiModel && (
-                    <img src={MODEL_LOGOS[settings.geminiModel as keyof typeof MODEL_LOGOS]} alt="" className="w-4 h-4 shrink-0" />
+                <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[170px] px-2 gap-2">
+                  {settings.geminiModel === 'gemini-2.5-flash' && (
+                    <div className="flex items-center gap-2">
+                      <img src={MODEL_LOGOS["gemini-2.5-flash"]} alt="" className="w-4 h-4" />
+                      <span>Gemini 2.5 Flash</span>
+                    </div>
                   )}
-                  <SelectValue placeholder="Model" />
+                  {settings.geminiModel === 'gemini-3.5-flash-lite' && (
+                    <div className="flex items-center gap-2">
+                      <img src={MODEL_LOGOS["gemini-3.5-flash-lite"]} alt="" className="w-4 h-4" />
+                      <span>Gemini 3.5 Flash-Lite</span>
+                    </div>
+                  )}
+                  {!settings.geminiModel && <span className="text-slate-400">Model</span>}
                 </SelectTrigger>
                 <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[190px]">
                   <SelectItem value="gemini-2.5-flash">
@@ -108,11 +132,20 @@ export const Header: React.FC<HeaderProps> = ({
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider hidden md:inline-block">Provider</span>
           <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg p-0.5 hover:border-slate-300 transition-colors shadow-sm">
             <Select value={settings.provider} onValueChange={(val) => onUpdateSettings({ provider: val as AIProvider })}>
-              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[120px] px-2 gap-2 flex items-center">
-                {settings.provider && (
-                  <img src={PROVIDER_LOGOS[settings.provider]} alt="" className="w-4 h-4 rounded-sm shrink-0" />
+              <SelectTrigger className="h-8 border-0 bg-transparent shadow-none hover:bg-slate-50 font-medium text-slate-700 min-w-[130px] px-2 gap-2">
+                {settings.provider === 'cerebras' && (
+                  <div className="flex items-center gap-2">
+                    <img src={PROVIDER_LOGOS.cerebras} alt="" className="w-4 h-4 rounded-sm" />
+                    <span>Cerebras</span>
+                  </div>
                 )}
-                <SelectValue placeholder="Provider" />
+                {settings.provider === 'gemini' && (
+                  <div className="flex items-center gap-2">
+                    <img src={PROVIDER_LOGOS.gemini} alt="" className="w-4 h-4" />
+                    <span>Gemini</span>
+                  </div>
+                )}
+                {!settings.provider && <span className="text-slate-400">Provider</span>}
               </SelectTrigger>
               <SelectContent alignItemWithTrigger={false} align="start" className="min-w-[150px]">
                 <SelectItem value="cerebras">
