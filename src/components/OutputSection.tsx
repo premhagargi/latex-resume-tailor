@@ -94,47 +94,47 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result, onClose })
   return (
     <div className="flex flex-col h-full bg-white relative">
       {/* Header Row */}
-      <div className="flex-none p-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+      <div className="flex-none px-5 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
         <ScoreGauge before={result.beforeAtsScore} after={result.afterAtsScore} />
         {onClose && (
           <Button
             variant="ghost"
             onClick={onClose}
-            className="w-10 h-10 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-200/50 transition-colors shrink-0"
+            className="w-8 h-8 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-200/50 transition-colors shrink-0 p-0"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </Button>
         )}
       </div>
 
       {/* Tab Row */}
-      <div className="flex-none flex items-center px-4 pt-4 bg-white border-b border-slate-100 gap-2 overflow-x-auto">
+      <div className="flex-none flex items-center px-5 pt-4 bg-white border-b border-slate-100 gap-2 overflow-x-auto no-scrollbar">
         <button
           onClick={() => setActiveTab('latex')}
-          className={`flex-1 min-w-[120px] pb-3 text-xs font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors ${
+          className={`flex-1 min-w-[120px] pb-3 text-[11px] font-semibold flex items-center justify-center gap-1.5 border-b-2 transition-colors ${
             activeTab === 'latex' ? 'border-[#da7756] text-[#da7756]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
           }`}
         >
-          <FileCode className="w-4 h-4" />
+          <FileCode className="w-3.5 h-3.5" />
           LaTeX Code
         </button>
         <button
           onClick={() => setActiveTab('keywords')}
-          className={`flex-1 min-w-[120px] pb-3 text-xs font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors ${
+          className={`flex-1 min-w-[120px] pb-3 text-[11px] font-semibold flex items-center justify-center gap-1.5 border-b-2 transition-colors ${
             activeTab === 'keywords' ? 'border-[#da7756] text-[#da7756]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
           }`}
         >
-          <Zap className="w-4 h-4" />
+          <Zap className="w-3.5 h-3.5" />
           Keywords ({result.matchedKeywords.length + result.missingKeywordsAdded.length})
         </button>
         <button
           onClick={() => setActiveTab('audit')}
-          className={`flex-1 min-w-[120px] pb-3 text-xs font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors ${
+          className={`flex-1 min-w-[120px] pb-3 text-[11px] font-semibold flex items-center justify-center gap-1.5 border-b-2 transition-colors ${
             activeTab === 'audit' ? 'border-[#da7756] text-[#da7756]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
           }`}
         >
-          <CheckCircle2 className="w-4 h-4" />
+          <CheckCircle2 className="w-3.5 h-3.5" />
           Changes ({result.keyChanges.length})
         </button>
       </div>
@@ -143,7 +143,7 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result, onClose })
       <div className="flex-1 min-h-0 relative overflow-hidden bg-white">
         {/* Tab 1: Full LaTeX Code Editor/Viewer */}
         {activeTab === 'latex' && (
-          <div className="absolute inset-0 overflow-auto bg-slate-950 p-4">
+          <div className="absolute inset-0 overflow-auto bg-slate-950 p-5">
             <LatexHighlighter code={result.tailoredLatex} />
           </div>
         )}
@@ -234,21 +234,21 @@ export const OutputSection: React.FC<OutputSectionProps> = ({ result, onClose })
       </div>
 
       {/* Action Row */}
-      <div className="flex-none p-4 bg-white border-t border-slate-100 flex items-center justify-end gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10">
+      <div className="flex-none px-5 py-3 bg-white border-t border-slate-100 flex items-center justify-end gap-3 z-10">
         <Button
           variant="outline"
           onClick={handleCopy}
-          className="h-10 px-6 rounded-lg bg-white border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50 transition-all min-w-[120px]"
+          className="h-9 px-4 rounded-lg bg-white border-slate-300 text-slate-700 font-semibold text-[11px] hover:bg-slate-50 transition-all min-w-[110px]"
         >
-          {copied ? <Check className="w-4 h-4 mr-2 text-green-600" /> : <Copy className="w-4 h-4 mr-2" />}
+          {copied ? <Check className="w-3.5 h-3.5 mr-1.5 text-green-600" /> : <Copy className="w-3.5 h-3.5 mr-1.5" />}
           {copied ? 'Copied ✓' : 'Copy LaTeX'}
         </Button>
 
         <Button
           onClick={handleDownload}
-          className="h-10 px-6 rounded-lg bg-[#da7756] hover:bg-[#c86a4c] text-white font-semibold text-sm shadow-md transition-all"
+          className="h-9 px-4 rounded-lg bg-[#da7756] hover:bg-[#c86a4c] text-white font-semibold text-[11px] shadow-sm transition-all"
         >
-          <Download className="w-4 h-4 mr-2" />
+          <Download className="w-3.5 h-3.5 mr-1.5" />
           Download .tex
         </Button>
       </div>

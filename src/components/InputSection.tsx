@@ -68,13 +68,13 @@ export const InputSection: React.FC<InputSectionProps> = ({
           className="w-full h-full border-0 bg-transparent text-slate-700 text-xs leading-relaxed rounded-2xl resize-none focus-visible:ring-0 p-5 pt-16 pb-16 overflow-y-auto"
         />
 
-        <div className="absolute bottom-3 right-3 z-10 pointer-events-auto">
+        <div className="absolute bottom-4 right-4 z-10 pointer-events-auto">
           <Button
             onClick={onOptimize}
             disabled={isProcessing || !latexCode.trim() || !jobDescription.trim()}
-            className="h-10 text-xs font-semibold px-6 rounded-xl bg-[#da7756] hover:bg-[#c86a4c] text-white shadow-lg shadow-[#da7756]/20 transition-all active:scale-95"
+            className="h-9 text-[11px] font-semibold px-4 rounded-lg bg-[#da7756] hover:bg-[#c86a4c] text-white shadow-md shadow-[#da7756]/20 transition-all active:scale-95"
           >
-            <Sparkles className={`w-4 h-4 mr-2 text-white/90 ${isProcessing ? 'animate-spin' : ''}`} />
+            <Sparkles className={`w-3.5 h-3.5 mr-2 text-white/90 ${isProcessing ? 'animate-spin' : ''}`} />
             {isProcessing ? 'Tailoring...' : 'Tailor Resume'}
           </Button>
         </div>
